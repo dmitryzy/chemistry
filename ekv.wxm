@@ -1,0 +1,57 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.04.0 ] */
+
+/* [wxMaxima: title   start ]
+Закон эквивалентов
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+C+O_2=CO_2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+M:[12,32,44];
+A:[-1,-1,1];
+m:[m1,m2,m3];
+V:[V1,V2,V3];
+Vm:22.4;
+ns:3;
+ivar:1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+EKVm:(m/M)*A;
+EKVv:(V/Vm)*A;
+eq1:[]$eq2:[]$
+for i:2 thru ns do eq1:append(eq1,[EKVm[1]=EKVm[i]]);
+for i:2 thru ns do eq2:append(eq2,[EKVv[1]=EKVv[i]]);
+eq1;eq2;
+ms:[]$Vs:[]$
+for i:2 thru ns do ms:append(ms,[rhs(solve(eq1[i-1],[m[i]])[1])]);
+ms;
+res_ms(g):=subst(g,m[ivar],ms);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+res_ms(4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ms2(m1):=subst(m1,'m1,rhs(solve(eq1[1],[m2])[1]));
+ms3(m1):=subst(m1,'m1,rhs(solve(eq1[2],[m3])[1]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ms3(u);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+44/12;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m[2];
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
